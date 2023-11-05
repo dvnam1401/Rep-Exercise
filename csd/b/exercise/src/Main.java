@@ -1,17 +1,35 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        BST tree = new BST();
+        Pupil[] pupils = {
+                new Pupil(5, 5),
+                new Pupil(3, 3),
+                new Pupil(2, 2),
+                new Pupil(4, 44),
+                new Pupil(7, 47),
+                new Pupil(6, 100),
+                new Pupil(8, 88),
+                new Pupil(1, 11),
+                new Pupil(9, 99)
+        };
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        for (Pupil pupil : pupils) {
+            tree.insert(pupil);
+        }
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        tree.determineLevels();
+        System.out.println("Is AVL: " + tree.isAVL());
+        System.out.println("Pre-order traversal:");
+        tree.preorderLoop();
+
+        System.out.println("\nDecreasing marks:");
+        tree.decreaseMarks();
+        tree.preorderLoop();
+
+        System.out.println("\nSorted Pupils by mark using RadixSort:");
+        RadixSort.sort(pupils);
+        for (Pupil pupil : pupils) {
+            System.out.println("Rollno: " + pupil.rollno + ", Mark: " + pupil.mark);
         }
     }
 }
